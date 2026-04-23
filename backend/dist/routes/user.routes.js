@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const container_1 = require("../container");
+const types_1 = require("../types");
+const authMiddleware_1 = require("../middleware/authMiddleware");
+const routes_1 = require("../constants/routes");
+const cookie_parser_1 = __importDefault(require("cookie-parser"));
+const router = (0, express_1.Router)();
+router.use((0, cookie_parser_1.default)());
+const controller = container_1.container.get(types_1.TYPES.UserController);
+router.post(routes_1.ROUTES.AUTH.REGISTER, controller.register);
+router.post(routes_1.ROUTES.AUTH.LOGIN, controller.login);
+router.post(routes_1.ROUTES.AUTH.REFRESH, controller.refresh);
+router.post(routes_1.ROUTES.AUTH.LOGOUT, controller.logout);
+router.get(routes_1.ROUTES.USER.GET_ALL, authMiddleware_1.authMiddleware, controller.getUsers);
+exports.default = router;
