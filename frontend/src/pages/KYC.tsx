@@ -92,8 +92,7 @@ const KYC = () => {
     try {
       const formData = new FormData();
 
-      const imageResponse = await fetch(image);
-      const imageBlob = await imageResponse.blob();
+      const imageBlob = await (await fetch(image)).blob();
 
       formData.append("image", imageBlob, "image.jpg");
       formData.append("video", videoBlob, "video.webm");
@@ -137,7 +136,12 @@ const KYC = () => {
                 📸 Capture Selfie
               </h3>
 
-              <Button onClick={captureImage} disabled={isSubmitting} variant="success" fullWidth>
+              <Button
+                onClick={captureImage}
+                disabled={isSubmitting}
+                variant="success"
+                fullWidth
+              >
                 Capture Image
               </Button>
 
@@ -205,7 +209,6 @@ const KYC = () => {
             </div>
           </div>
 
-          
           <div className="mt-10">
             <Button
               onClick={submitKYC}

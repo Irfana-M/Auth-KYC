@@ -143,7 +143,7 @@ npm run dev
 
 ##  Running the Application
 
-- Frontend: https://vercel.com/irfana-ms-projects/auth-kyc 
+- Frontend:  https://auth-kyc.vercel.app
 - Backend: https://auth-kyc.onrender.com  
 
 ---
