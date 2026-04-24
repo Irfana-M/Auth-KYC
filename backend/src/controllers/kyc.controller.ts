@@ -15,13 +15,12 @@ export class KycController {
 
     uploadKyc = async (req: AuthRequest, res: Response) => {
         try {
-            
-            const files = req.files as {
-                image?: Express.Multer.File[];
-                video?: Express.Multer.File[];
-            };
 
-            if (!files?.image || !files?.video) {
+            const files = req.files as
+                | { image?: Express.Multer.File[]; video?: Express.Multer.File[] }
+                | undefined;
+
+            if (!files || !files.image || !files.video) {
                 throw new AppError(
                     MESSAGES.KYC.REQUIRED,
                     HttpStatusCode.BAD_REQUEST

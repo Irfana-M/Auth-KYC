@@ -97,11 +97,7 @@ const KYC = () => {
       formData.append("image", imageBlob, "image.jpg");
       formData.append("video", videoBlob, "video.webm");
 
-      const res = await api.post("/kyc/upload", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const res = await api.post("/kyc/upload", formData);
 
       const data = res.data;
 
