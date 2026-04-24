@@ -12,18 +12,13 @@ import errorHandler from './middleware/errorHandler'
 import kycRoutes from './routes/kyc.routes';
 
 
-
-console.log('=== ENVIRONMENT CHECK ===');
-console.log('CLOUDINARY_CLOUD_NAME:', process.env.CLOUD_NAME);
-console.log('CLOUDINARY_API_KEY:', process.env.API_KEY ? 'LOADED' : 'MISSING');
-console.log('CLOUDINARY_API_SECRET:', process.env.API_SECRET ? 'LOADED' : 'MISSING');
-console.log('========================');
+console.log("MONGO_URI:", process.env.MONGO_URI);
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 const corsOptions = {
-  origin: process.env.CLIENT_URL || "http://localhost:5173",
+  origin: process.env.CLIENT_URL,
   credentials: true,
   methods: ['GET','POST','PUT','DELETE','OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],

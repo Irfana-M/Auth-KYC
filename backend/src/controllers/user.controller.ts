@@ -56,8 +56,8 @@ export class UserController {
       }
       res.cookie('refreshToken', refreshToken, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
+        sameSite: 'none',
+        secure: true,
         maxAge: ms(expires as ms.StringValue),
       })
       logger.info(`User logged in: ${email}`);
@@ -101,8 +101,8 @@ export class UserController {
 
     res.clearCookie('refreshToken', {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict'
+      sameSite: 'none',
+      secure: true
     });
 
     res.status(HttpStatusCode.OK).json({

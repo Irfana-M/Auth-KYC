@@ -1,196 +1,208 @@
 # MERN KYC Dashboard Application
 
-## Description
+A secure and scalable MERN stack application implementing user authentication and KYC (Know Your Customer) verification with real-time image and video capture.
 
-This project is a full-stack MERN application built using a clean and scalable architecture. It includes user authentication, KYC (Know Your Customer) functionality, and a dashboard with pagination and search features.
+---
 
-The application is designed to demonstrate real-world development practices such as separation of concerns, secure authentication, structured API handling, and responsive UI design.
+## Project Overview
+
+This project is a full-stack MERN application built using a clean and scalable architecture. It includes secure user authentication, KYC functionality, and a dashboard with pagination and search features.
+
+The application demonstrates real-world development practices such as separation of concerns, secure authentication, structured API handling, and responsive UI design.
 
 ---
 
 ## Features
 
-* User registration and login using JWT authentication
-* Secure password hashing with bcrypt
-* Protected routes for authenticated users
-* KYC functionality:
+### Authentication
+- User registration and login using JWT authentication
+- Secure password hashing using bcrypt
+- Token-based session management
 
-  * Capture image using webcam
-  * Record video with audio
-* Dashboard with:
+###  Authorization
+- Protected routes using middleware
+- Only authenticated users can access dashboard
 
-  * Pagination
-  * Search functionality
-* Form validation using React Hook Form and Zod
-* Centralized error handling
-* Clean architecture (Controller → Service → Repository pattern)
+###  KYC Functionality
+- Capture image using webcam
+- Record video with audio
+- Separate controls for image and video capture
+- Works on desktop and mobile browsers
+
+###  Dashboard
+- Pagination for efficient data handling
+- Search functionality for filtering users
+
+###  Validation & Architecture
+- Form validation using React Hook Form and Zod
+- Centralized error handling
+- Clean architecture (Controller → Service → Repository)
 
 ---
 
-## Tech Stack
+##  Tech Stack
 
 ### Frontend
-
-* React (Vite)
-* Tailwind CSS
-* React Hook Form
-* Zod
-* Axios
-* React Toastify
-* React Webcam
+- React (Vite)
+- Tailwind CSS
+- React Hook Form
+- Zod
+- Axios
+- React Toastify
+- React Webcam
 
 ### Backend
-
-* Node.js
-* Express.js
-* MongoDB (Mongoose)
-* JSON Web Token (JWT)
-* Bcrypt
-* Morgan (for logging)
+- Node.js
+- Express.js
+- MongoDB (Mongoose)
+- JSON Web Token (JWT)
+- Bcrypt
+- Morgan (logging)
 
 ---
 
-## Folder Structure
+##  Folder Structure
 
 ### Backend
-
-```
 backend/
- ├── controllers/
- ├── services/
- ├── repositories/
- ├── models/
- ├── routes/
- ├── middleware/
- ├── constants/
- ├── utils/
-```
+├── controllers/
+├── services/
+├── repositories/
+├── models/
+├── routes/
+├── middleware/
+├── constants/
+├── utils/
+
 
 ### Frontend
 
-```
 frontend/
- ├── api/
- ├── services/
- ├── components/
- ├── pages/
- ├── schemas/
- ├── context/
- ├── hooks/
- ├── utils/
-```
+├── api/
+├── services/
+├── components/
+├── pages/
+├── schemas/
+├── context/
+├── hooks/
+├── utils/
+
 
 ---
 
-## Installation and Setup
+##  Setup Instructions (Run Locally)
 
-### 1. Clone the Repository
+###  Clone the Repository
 
-```
-git clone https://github.com/your-username/your-repo.git
+git clone https://github.com/Irfana-M/Auth-KYC
+
 cd your-repo
-```
+
 
 ---
 
-### 2. Backend Setup
+###  Backend Setup
 
-```
 cd backend
 npm install
-```
 
-Create a `.env` file in the backend folder and add:
 
-```
+Create a `.env` file in the backend folder:
+
+
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
-```
 
-Start the backend server:
 
-```
+Run backend:
+
 npm run dev
-```
+
 
 ---
 
-### 3. Frontend Setup
+###  Frontend Setup
 
-```
 cd frontend
 npm install
-```
 
-Create a `.env` file in the frontend folder and add:
 
-```
+Create a `.env` file in frontend:
+
+
 VITE_API_URL=http://localhost:5000/api
-```
 
-Start the frontend:
 
-```
+Run frontend:
+
 npm run dev
-```
+
 
 ---
 
-## Running the Application
+##  Running the Application
 
-* Frontend runs on: http://localhost:5173
-* Backend runs on: http://localhost:5000
-
----
-
-## API Endpoints
-
-| Method | Endpoint   | Description               |
-| ------ | ---------- | ------------------------- |
-| POST   | /register  | Register a new user       |
-| POST   | /login     | Authenticate user         |
-| GET    | /dashboard | Protected route           |
-| GET    | /users     | Get users with pagination |
+- Frontend: https://vercel.com/irfana-ms-projects/auth-kyc 
+- Backend: https://auth-kyc.onrender.com  
 
 ---
 
-## KYC Functionality
+##  API Endpoints
 
-The application includes a KYC module that allows users to verify their identity.
-
-* Users can capture an image using their device camera
-* Users can record a video with audio using the MediaRecorder API
-* The feature supports modern browsers and mobile devices
-* Basic validation is applied before submission
-
----
-
-## Deployment
-
-Frontend: https://your-frontend-url.vercel.app
-Backend: https://your-backend-url.onrender.com
+| Method | Endpoint         | Description               |
+|--------|----------------|--------------------------|
+| POST   | /api/register  | Register a new user      |
+| POST   | /api/login     | Authenticate user        |
+| GET    | /api/dashboard | Protected route          |
+| GET    | /api/users     | Get users with pagination|
 
 ---
 
-## Future Improvements
+## KYC Implementation
 
-* Role-based access control (admin and user roles)
-* Upload KYC files to a cloud storage service
-* Email verification during registration
-* Improved UI/UX enhancements
-* Docker-based deployment
-
----
-
-## Author
-
-Your Name
-GitHub: https://github.com/your-username
-LinkedIn: https://linkedin.com/in/your-profile
+- Used **react-webcam** for capturing images  
+- Used **MediaRecorder API** for recording video and audio  
+- Supports modern browsers and mobile devices  
+- Basic validation before submission  
 
 ---
 
-## License
+##  Security Considerations
+
+- Passwords are hashed using bcrypt with salt  
+- JWT is used for authentication and authorization  
+- Protected routes via middleware  
+- Input validation using Zod  
+- Environment variables used for sensitive data  
+
+---
+
+##  Deployment
+
+Frontend: https://your-frontend-url.vercel.app  
+Backend: https://your-backend-url.onrender.com  
+
+---
+
+##  Future Improvements
+
+- Role-based access control (admin/user)
+- Cloud storage for KYC files (AWS S3 / Cloudinary)
+- Email verification
+- Improved UI/UX
+- Docker support
+
+---
+
+##  Author
+
+Irfana M 
+GitHub: https://github.com/Irfana-M 
+LinkedIn: https://www.linkedin.com/in/irfana-riyas/  
+
+---
+
+## 📄 License
 
 This project is licensed under the MIT License.
